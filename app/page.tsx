@@ -1,11 +1,8 @@
 import Hero from '@/components/Hero';
 import Problems from '@/components/Problems';
 import Expertise from '@/components/Expertise';
-import Stats from '@/components/Stats';
-import ProcessTimeline from '@/components/ProcessTimeline';
-import UseCases from '@/components/UseCases';
-import WhyCloudAGI from '@/components/WhyCloudAGI';
-import TechStack from '@/components/TechStack';
+import Team from '@/components/Team';
+import FAQ from '@/components/FAQ';
 import ContactCTA from '@/components/CTA';
 import Particles from '@/components/ui/Particles';
 
@@ -13,11 +10,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div className="relative w-full bg-white/5">
+      <div className="relative w-full bg-background/50">
         <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
           <Particles
             className="absolute inset-0"
-            quantity={300}
+            quantity={60}
             staticity={50}
             color="#334155"
             ease={50}
@@ -25,14 +22,11 @@ export default function Home() {
             refresh
           />
         </div>
-        <div className="relative z-10">
+        <div className="relative z-10 space-y-24 pb-24">
           <Problems />
           <Expertise />
-          <Stats />
-          <ProcessTimeline />
-          <UseCases />
-          <WhyCloudAGI />
-          <TechStack />
+          <Team />
+          <FAQ />
           <ContactCTA />
         </div>
       </div>
