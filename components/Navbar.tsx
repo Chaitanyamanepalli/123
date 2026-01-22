@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
-import { ThemeToggle } from './ThemeToggle';
 
 const navLinks = [
   { name: 'Expertise', href: '/expertise' },
@@ -62,7 +61,6 @@ export default function Navbar() {
 
         {/* Right CTA */}
         <div className="flex items-center gap-4">
-          <ThemeToggle />
           <Link href="/contact" className="btn btn-primary shadow-blue-500/20 font-semibold">
             Get Started
           </Link>

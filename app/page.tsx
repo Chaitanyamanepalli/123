@@ -14,11 +14,11 @@ export default function Home() {
         <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
           <Particles
             className="absolute inset-0"
-            quantity={60}
-            staticity={50}
-            color="#334155"
+            quantity={80}
+            staticity={30}
             ease={50}
-            size={1.0}
+            size={1.6}
+            color="#1e293b" // Slate-800 (Dark visible color)
             refresh
           />
         </div>

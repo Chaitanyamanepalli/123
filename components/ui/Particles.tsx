@@ -105,7 +105,7 @@ export default function Particles({
         const translateY = 0;
         const pSize = Math.floor(Math.random() * 2) + size;
         const alpha = 0;
-        const targetAlpha = parseFloat((Math.random() * 0.4 + 0.4).toFixed(1)); // Higher min opacity (0.4-0.8)
+        const targetAlpha = parseFloat((Math.random() * 0.2 + 0.8).toFixed(1)); // Higher opacity (0.8-1.0)
         const dx = (Math.random() - 0.5) * 0.1;
         const dy = (Math.random() - 0.5) * 0.1;
         const magnetism = 0.1 + Math.random() * 4;
@@ -175,17 +175,19 @@ export default function Particles({
             circles.current.slice(i + 1).forEach((otherCircle) => {
                 const dx = circle.x - otherCircle.x;
                 const dy = circle.y - otherCircle.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
+                const distanceAsquared = dx * dx + dy * dy;
+                const distanceThreshold = 150;
+                const thresholdSquared = distanceThreshold * distanceThreshold;
 
-                if (distance < 150) { // Connection threshold
+                if (distanceAsquared < thresholdSquared) {
+                    const distance = Math.sqrt(distanceAsquared);
                     if (context.current) {
                         context.current.beginPath();
                         context.current.moveTo(circle.x, circle.y);
                         context.current.lineTo(otherCircle.x, otherCircle.y);
-                        context.current.lineWidth = 0.6; // Thicker lines
-                        // Opacity based on distance
-                        const opacity = 1 - distance / 150;
-                        context.current.strokeStyle = `rgba(${hexToRgb(color)}, ${opacity * 0.5})`; // Much more visible lines (0.5 opacity)
+                        context.current.lineWidth = 0.6;
+                        const opacity = 1 - distance / distanceThreshold;
+                        context.current.strokeStyle = `rgba(${hexToRgb(color)}, ${opacity * 0.8})`;
                         context.current.stroke();
                     }
                 }
